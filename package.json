@@ -1,0 +1,23 @@
+{
+  "name": "bionet-shipping-labeler",
+  "version": "0.0.1",
+  "homepage": "http://github.com/biobricks/bionet-shipping-labeler",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/biobricks/bionet-shipping-labeler.git"
+  },
+  "author": {
+    "name": "Marc Juul",
+    "email": "npm@juul.io"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/biobricks/bionet-shipping-labeler/issues"
+  },
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@easypost/api": "^3.6.1",
+    "clone": "^2.1.1",
+    "country-data": "0.0.31"
+  }
+}
