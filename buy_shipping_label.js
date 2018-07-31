@@ -54,7 +54,7 @@ function reallyBuyShippingLabel(shipment, output_dir, callback) {
       resp.pipe(f);
 
       f.on('close', function() {
-        callback(null, shipment, filepath);
+        callback(null, shipment, filename);
       });
     })
   }).catch(callback)
