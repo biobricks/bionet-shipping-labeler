@@ -12,7 +12,7 @@ module.exports = {
   // If this is not specified 
   // then you must specify opts.fromAddress when calling .buyLabel
   fromAddress: {
-    name: "Organization or person",
+    name: "Someperson",
     street1: "Somestreet 42",
     street2: "Building 1337",
     city: "Oakland",
