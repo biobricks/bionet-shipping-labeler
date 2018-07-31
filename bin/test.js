@@ -5,10 +5,16 @@ var Labeler = require('../index.js');
 var settings = require('../settings.js');
 
 
+var labeler = new Labeler(settings);
+// If you want to pay money and create real labels then instead use this:
+// WARNING: uncommenting the following will cost you real money!
+//var labeler = new Labeler(settings, true);
+
+
 console.log("Creating fake label");
 
 var address = {
-  name: "Marc Juul",
+  name: "Hu Man",
   street1: "4799 Shattuck Ave",
   street2: "Back room",
   company: "Counter Culture Labs",
@@ -35,12 +41,22 @@ var pkg = {
   length: 4,
   height: 0.5,
   weight: 2
-//  predefined_package: "FedExEnvelope"
+/*
+  predefined_package: "FedExEnvelope",
+  items: [
+    // TODO this must be filled out for international shipments
+  ]
+*/
 }
 
-var labeler = new Labeler(settings);
+// where to save the label files
+var outDir = '../out/';
 
-labeler.buyLabel(address, pkg, function(err, shipment, filepath) {
+var opts = {
+  local: true // true if is this is only being shipped within the U.S.
+}
+
+labeler.buyLabel(address, pkg, opts, function(err, shipment, filepath) {
   if(err) {
     if(err.message && err.message.errors) {
       console.log(err.message.errors);
@@ -49,8 +65,6 @@ labeler.buyLabel(address, pkg, function(err, shipment, filepath) {
     }
     process.exit(1);
   }
-
-  console.log("Shipment:", shipment);
 
   console.log("Filepath:", filepath);
 });

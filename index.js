@@ -3,16 +3,8 @@ var util = require('util');
 var Easypost = require('@easypost/api');
 var buyShippingLabel = require('./buy_shipping_label.js');
 
-function isHouseNumber(str) {
-    if(str.match(/^\d+[\s\.,]*\w?$/)) {
-        return true;
-    }
-    return false;
-}
-
 function labeler(settings, reallyPayMoney)  {
-
-
+  this.settings = settings
 
   if(reallyPayMoney) {
     if(!settings.easypost.apiKey) {
@@ -38,8 +30,16 @@ function labeler(settings, reallyPayMoney)  {
     }).catch(callback);
   }
 
-  this.buyLabel = function(address, pkg, cb) {
-    buyShippingLabel(this.easypost, address, pkg, settings.fromAddress, settings.outDir, {local: true}, cb);
+  this.buyLabel = function(address, pkg, opts, cb) {
+    if(typeof opts === 'function') {
+      cb = opts;
+      opts = {};
+    }
+
+    opts.outDir  = opts.outDir || this.settings.outDir;
+    opts.customsInfo = opts.customsInfo || this.settings.customsInfo;
+
+    buyShippingLabel(this.easypost, address, pkg, opts.fromAddress || this.settings.fromAddress, opts.outDir, opts, cb);
   };
 
 }

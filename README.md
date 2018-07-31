@@ -3,10 +3,11 @@ This is a work-in-progress pre-paid shipping label generation library for the bi
 
 Currently it supports only the [https://www.easypost.com/ easypost] API.
 
-# Beware
+# Usage
 
-If someone gets ahold of your easypost API key from the `settings.js` file then they will be able to ship packages using your account. Make sure you set permissions appropriately, e.g. `chmod 600 settings.js`.
+For a usage example see `bin/test.js`. To run the test first copy `settings.js.example` to `settings.js` and set at least `apiKeyTesting`.
 
+Currently only national shipments within the U.S. are supported.
 
 # Copyright and license
 

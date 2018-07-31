@@ -6,8 +6,9 @@ module.exports = {
     apiKey: '1111111111111111111111' // your real actual easypost API key
   },
 
-  outDir: "out/",
-
+  // The default from address.
+  // If this is not specified 
+  // then you must specify opts.fromAddress when calling .buyLabel
   fromAddress: {
     name: "Organization or person",
     street1: "Somestreet 42",
@@ -18,6 +19,9 @@ module.exports = {
     phone: "132-321-3142"
   },
 
+  // The default custom info.
+  // If this is not specified 
+  // then you must specify opts.customsInfo when calling .buyLabel
   // Only used for shipping labels with an international destination
   // For more info see: 
   // https://www.easypost.com/customs-guide 
