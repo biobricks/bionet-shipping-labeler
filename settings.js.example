@@ -6,6 +6,8 @@ module.exports = {
     apiKey: '1111111111111111111111' // your real actual easypost API key
   },
 
+  outDir: "out/",
+
   // The default from address.
   // If this is not specified 
   // then you must specify opts.fromAddress when calling .buyLabel
